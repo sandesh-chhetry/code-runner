@@ -1,0 +1,20 @@
+@import "variable";
+@import "components/components";
+@import "common";
+
+
+.bg-dark {
+  background-color: $darkColor !important;
+}
+
+.body-wrap{
+  margin-left: $sidebarWidth;
+  padding: 24px;
+  background-color: #1A1F28;
+  height: 100vh;
+  padding-top: 100px;
+}
+
+.editor-body{
+  height: 100%;
+}
