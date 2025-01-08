@@ -11,6 +11,8 @@ const Header = () => {
           <Navbar.Brand href="#" className='font-bold h3 m-0 text-white'>
             <div className="logo-wrap"><img src={Logo} width={150} /></div>
             Code Runner</Navbar.Brand>
+            <Nav.Link href="/" className="text-white ms-5"> Task 1</Nav.Link>
+            <Nav.Link href="/course" className="text-white ms-3"> Task 2</Nav.Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

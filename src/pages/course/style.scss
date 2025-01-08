@@ -1,0 +1,25 @@
+// -----------------------------
+// seprate style for ui-course
+// -----------------------------
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+$secondaryColor: #C33241;
+$secondaryColor50: #F9EBEC;
+
+.course-wrap {
+  font-family: "Outfit", serif;
+
+  .course-list {
+    width: 280px;
+    border-radius: 32px;
+    padding: 36px;
+    &:hover{
+      cursor: pointer;
+    }
+    &.active {
+      background: $secondaryColor;
+      width: 592px;
+      padding: 75px 40px;
+      color: #ffffff;
+    }
+  }
+}
