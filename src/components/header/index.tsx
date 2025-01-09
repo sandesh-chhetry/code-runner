@@ -3,7 +3,11 @@ import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstr
 import { FaPlay, FaStop } from "react-icons/fa";
 import Logo from "../../assets/images/logo.png"
 
-const Header = () => {
+const Header = ({ handleRun, language, setLanguage }: any) => {
+  const handleLanguageChange = (event: any) => {
+    // console.log(event?.target.value)
+    setLanguage(event?.target.value)
+  }
   return (
     <header>
       <Navbar expand="lg" className="bg-dark py-3">
@@ -11,8 +15,8 @@ const Header = () => {
           <Navbar.Brand href="#" className='font-bold h3 m-0 text-white'>
             <div className="logo-wrap"><img src={Logo} width={150} /></div>
             Code Runner</Navbar.Brand>
-            <Nav.Link href="/" className="text-white ms-5"> Task 1</Nav.Link>
-            <Nav.Link href="/course" className="text-white ms-3"> Task 2</Nav.Link>
+          {/* <Nav.Link href="/" className="text-white ms-5"> Task 1</Nav.Link> */}
+            <Nav.Link href="/course" className="text-white ms-3"> Go to task 2</Nav.Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -22,14 +26,14 @@ const Header = () => {
             >
             </Nav>
             <Form className="d-flex align-items-center gap-2">
-              <Form.Select aria-label="Default select example">
-                <option>Python</option>
-                <option value="1">HTML</option>
-                <option value="2">JavaScript</option>
-                <option value="3">Java</option>
-                <option value="3">C++</option>
-                <option value="3">Rust</option>
-                <option value="3">PHP</option>
+              <Form.Select aria-label="Default select example" value={language} onChange={handleLanguageChange}>
+                <option value="python">Python</option>
+                <option value="HTML">HTML</option>
+                <option value="javascript">JavaScript</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+                <option value="rust">Rust</option>
+                <option value="php">PHP</option>
               </Form.Select>
               <Form.Select aria-label="Default select example">
                 <option>Github Light</option>
@@ -39,7 +43,7 @@ const Header = () => {
                 <option>Material</option>
                 <option>OneDark</option>
               </Form.Select>
-              <Button variant="success"> <FaPlay className="me-2" /> Run</Button>
+              <Button variant="success" onClick={() => handleRun()}> <FaPlay className="me-2" /> Run</Button>
               <Button variant="danger"> <FaStop className="me-2" /> Stop</Button>
             </Form>
           </Navbar.Collapse>

@@ -5,6 +5,22 @@
 $secondaryColor: #C33241;
 $secondaryColor50: #F9EBEC;
 
+.text-primary {
+  color: $secondaryColor !important;
+}
+
+.text-primary-50 {
+  color: $secondaryColor50 !important;
+}
+
+.bg-primary {
+  background-color: $secondaryColor !important;
+}
+
+.bg-primary-50 {
+  background-color: $secondaryColor50 !important;
+}
+
 .course-wrap {
   font-family: "Outfit", serif;
 
@@ -12,14 +28,53 @@ $secondaryColor50: #F9EBEC;
     width: 280px;
     border-radius: 32px;
     padding: 36px;
-    &:hover{
+    color: $secondaryColor;
+    display: flex;
+    flex-direction: column;
+
+    .course-number {
+      font-size: 150px;
+      font-weight: 700;
+      position: relative;
+
+      // font-family: "Nohemi", serif;
+      sup {
+        font-size: 64px;
+        position: absolute;
+        top: 20px;
+      }
+    }
+
+    .course-desc {
+      transform: rotate(0.75turn) translateX(0%);
+      transform-origin: center center;
+    }
+
+    .course-name {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .course-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    &:hover {
       cursor: pointer;
     }
+
     &.active {
-      background: $secondaryColor;
+      background: $secondaryColor !important;
       width: 592px;
       padding: 75px 40px;
-      color: #ffffff;
+      color: $secondaryColor50;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 24px;
+      .course-desc {
+        transform: rotate(0turn) translateX(0%);
+      }
     }
   }
 }

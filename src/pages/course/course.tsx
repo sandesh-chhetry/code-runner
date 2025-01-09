@@ -2,25 +2,28 @@ import React, { useState } from "react";
 import Layout from "../../components/layout";
 import "./style.scss";
 import { Container } from "react-bootstrap";
+import { FaPlus } from "react-icons/fa";
+import { BiPlus } from "react-icons/bi";
+import { Link } from "react-router-dom";
 const Course = () => {
   const courseList = [
     {
       "id": 1,
-      "name": "Introduction to Programming",
-      "number": "CS101",
-      "subtitle": "Learn the basics of programming with Python"
+      "name": "All Courses",
+      "number": "23",
+      "subtitle": "courses you're powering through right now."
     },
     {
       "id": 2,
-      "name": "Web Development",
-      "number": "WD201",
-      "subtitle": "Build dynamic websites with HTML, CSS, and JavaScript"
+      "name": "Upcoming Courses",
+      "number": "05",
+      "subtitle": "exciting new courses waiting to boost your skills."
     },
     {
       "id": 3,
-      "name": "Data Structures and Algorithms",
-      "number": "DSA301",
-      "subtitle": "Master the fundamental concepts for efficient problem-solving"
+      "name": "Ongoing Courses",
+      "number": "10",
+      "subtitle": "currently happening—don’t miss out on the action!"
     }
   ]
 
@@ -31,24 +34,31 @@ const Course = () => {
   };
 
   return (
-    <Layout>
+    // <Layout>
+    <>
       <div className="bg-white h-100 course-wrap">
         <Container>
+        <div className="py-5">
+          <Link to={"/"} className="btn btn-primary d-inline">Go to Task 1</Link>
+        </div>
           <div className="d-flex gap-3">
             {courseList.map((course, index) => (
               <div
                 key={course.id}
-                className={`course-list ${activeIndex === index ? 'active' : ''}`}
+                className={`course-list bg-primary-50 ${activeIndex === index ? 'active' : ''}`}
                 onClick={() => handleClick(index)}>
-                <h3>{course.name}</h3>
-                <p>{course.number}</p>
-                <small>{course.subtitle}</small>
+                <div className="course-desc">
+                  <h2 className="course-name" >{course.name}</h2>
+                  <p className="course-subtitle">{course.subtitle}</p>
+                </div>
+                <h3 className="course-number">{course.number} <sup>+</sup></h3>
               </div>
             ))}
           </div>
         </Container>
       </div>
-    </Layout>
+    </>
+    // </Layout>
   )
 }
 

@@ -1,4 +1,5 @@
 @import "variable";
+// @import "fonts/font";
 @import "components/components";
 @import "common";
 
@@ -74,4 +75,43 @@
   cursor: col-resize;
   position: relative;
   z-index: 10;
+}
+
+// -------------------------------------
+// editor section style
+// -------------------------------------
+
+.editor-section {
+  display: flex;
+  font-family: monospace;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  .line-numbers {
+    background-color: #f7f7f7;
+    padding: 10px 2px;
+    text-align: right;
+    color: #888;
+    border-right: 1px solid #ddd;
+    user-select: none;
+    white-space: pre;
+    width: 36px;
+
+    pre {
+      line-height: 21px;
+      font-size: 12px;
+    }
+
+  }
+  .code-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 10px;
+  }
 }
