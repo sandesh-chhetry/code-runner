@@ -1,13 +1,13 @@
-import React from "react";
-import { Button, Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import { FaPlay, FaStop } from "react-icons/fa";
 import Logo from "../../assets/images/logo.png"
 
-const Header = ({ handleRun, language, setLanguage }: any) => {
+const Header = ({ handleRun, handleStop, language, setLanguage, isDisabled }: any) => {
   const handleLanguageChange = (event: any) => {
     // console.log(event?.target.value)
     setLanguage(event?.target.value)
   }
+
   return (
     <header>
       <Navbar expand="lg" className="bg-dark py-3">
@@ -43,8 +43,8 @@ const Header = ({ handleRun, language, setLanguage }: any) => {
                 <option>Material</option>
                 <option>OneDark</option>
               </Form.Select>
-              <Button variant="success" onClick={() => handleRun()}> <FaPlay className="me-2" /> Run</Button>
-              <Button variant="danger"> <FaStop className="me-2" /> Stop</Button>
+              <Button variant="success" disabled={isDisabled} onClick={() => handleRun()}> <FaPlay className="me-2" /> Run</Button>
+              <Button variant="danger" disabled={!isDisabled} onClick={() => handleStop()}> <FaStop className="me-2" /> Stop</Button>
             </Form>
           </Navbar.Collapse>
         </Container>

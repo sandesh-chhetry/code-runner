@@ -3,18 +3,21 @@ import Layout from "../../components/layout";
 import CodeBody from "./components/codebody";
 import ResponseBody from "./components/responsebody";
 
+const socketURL = import.meta.env.VITE_SOCKET_URL;
+
+
 const Home = () => {
   const wsRef = useRef<WebSocket | null>(null);
   const [dividerPosition, setDividerPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [code, setCode] = useState("");
   const [output, setOutput] = useState<string | null>("");
-  const [isError, setIsError] = useState<boolean>(false);
   const [selectedLanguage, setSelectedLanguage] = useState("javascript");
+  const [isDisabled, setIsDisabled] = useState(false);
 
 
   useEffect(() => {
-    const ws = new WebSocket("wss://compiler.skillshikshya.com/ws/compiler/");
+    const ws = new WebSocket(socketURL);
     wsRef.current = ws;
 
     ws.onopen = () => {
@@ -23,7 +26,6 @@ const Home = () => {
 
     ws.onmessage = (event) => {
       const responsebody = JSON.parse(event.data);
-      console.log(responsebody)
       // if (responsebody.type === "stderr") {
       //   setIsError(true);
       //   setOutput("Something went wrong");
@@ -32,6 +34,7 @@ const Home = () => {
       const char = responsebody.data;
       if (char != undefined) {
         setOutput((prevOutput) => (prevOutput ?? "") + char)
+        setIsDisabled(true);
       }
     };
 
@@ -92,12 +95,20 @@ const Home = () => {
     if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
       wsRef.current.send(JSON.stringify(payload));
     }
-    console.log(payload)
   }
-  console.log(selectedLanguage)
+
+  const handleStop = () => {
+    const payload = {
+      "command": "stop",
+    };
+    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+      wsRef.current.send(JSON.stringify(payload));
+    }
+    setIsDisabled(false);
+  }
   return (
     <>
-      <Layout handleRun={handleRun} language={selectedLanguage} setLanguage={setSelectedLanguage}>
+      <Layout handleRun={handleRun} handleStop= {handleStop} language={selectedLanguage} setLanguage={setSelectedLanguage} isDisabled ={isDisabled}>
         <div className="resizable-container editor-body">
           <div className="left-div bg-dark p-2" style={{ width: `${dividerPosition}%` }}>
             <CodeBody setCode={setCode} />

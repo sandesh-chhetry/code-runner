@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import Layout from "../../components/layout";
+import { useState } from "react";
 import "./courses.scss";
 import { Container } from "react-bootstrap";
-import { FaPlus } from "react-icons/fa";
-import { BiPlus } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { IoMdArrowForward } from "react-icons/io";
 import ReactIcon from '../../assets/images/course-icon/react.png'

@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 const CodeBody = ({ setCode }: any) => {
   const [input, setInput] = useState<string>('');
-  const [output, setOutput] = useState<string>('');
 
   const handleCodeChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCode(event.target.value);

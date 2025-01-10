@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Python from "../../assets/images/python.png"
 import HTML from "../../assets/images/html.png"
