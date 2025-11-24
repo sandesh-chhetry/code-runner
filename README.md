@@ -56,4 +56,3 @@ Ensure you have the following installed:
 
    The application will be available at `http://localhost:5173`.
    
-   The application Task 2 will be available at `http://localhost:5173/course` By clicking on `Go to task 2` and `vice versa`

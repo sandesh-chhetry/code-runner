@@ -41,9 +41,9 @@ const Course = () => {
     <>
       <div className="bg-white h-100 course-wrap">
         <Container>
-          <div className="pt-5">
+          {/* <div className="pt-5">
             <Link to={"/"} className="btn btn-primary d-inline">Go to Task 1</Link>
-          </div>
+          </div> */}
 
           <div className="section-title">
             <h4>Explore our classes and master trending skills!</h4>
